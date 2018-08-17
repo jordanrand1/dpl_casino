@@ -7,44 +7,22 @@ describe Manager do
   end
 
   it 'prints main menu' do
-    cards =
-                "__                                               
-        _..-''--'----_.                                        
-      ,''.-''| .---/ _`-._                                     
-    ,' \ \  ;| | ,/ / `-._`-.                                  
-  ,' ,',\ \( | |// /,-._  / /                                  
-  ;.`. `,\ \`| |/ / |   )/ /                                   
- / /`_`.\_\ \| /_.-.'-''/ /                                    
-/ /_|_:.`. \ |;'`..')  / /                                     
-`-._`-._`.`.;`.\  ,'  / /                                      
-    `-._`.`/    ,'-._/ /                                       
-      : `-/     \`-.._/                                        
-      |  :      ;._ (                                          
-      :  |      \  ` \                                         
-       \         \   |                                         
-        :        :   ;                                         
-        |           /                                          
-        ;         ,'                                           
-       /         /                                             
-      /         /                                              
-               /"
-    expected = cards
+    expected = puts "+-+-+-+-+ Welcome to the Casino +-+-+-+-+ \n 1) Check balance \n 2) List games \n 3) Exit \n+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+"
     puts expected
-    puts @manager.main_menu
+    puts @manager.print_main_menu
     expect{@manager.main_menu}.to output(expected).to_stdout
   end
 
-  it 'displays money' do
-    @answer.add_answer('Test')
-    expected = @answer.default_answers
-    @answer.reset_answers
-    actual = @answer.my_answers
+  it 'gets money' do
+    expected = @manager.money
+    actual = @manager.money
     expect(actual).to eq(expected)
   end
 
-  it 'does nothing' do
-    expected = puts @answer.my_answers
-    expect {@answer.print_answers}.to output(expected).to_stdout
+  it 'chooses an option from the menu' do
+    expected = @manager.choose_option(1)
+    actual = @manager.choose_option(1)
+    expect (expected).to eq(actual)
   end
 
 end
