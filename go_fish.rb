@@ -1,5 +1,6 @@
 require_relative 'casino_manager.rb'
 require_relative 'deck.rb'
+#require_relative 'rick-roll.mp3'
 
 #require gemfile
 ##what gems may be useful?
@@ -66,7 +67,14 @@ class GoFish
         deal
         menu_choice
       when 3
-        exit #exit to main_casino menu
+        %x( say 'Never gonna give you up 
+        Never gonna let you down 
+        Never gonna run around and dessert you 
+        Never gonna make you cry 
+        Never gonna say good bye 
+        Never gonna tell a lie and hurt you' ) 
+        #8 bit or midi file
+        exit 
       else
         puts 'whats your problem man'
       end
