@@ -1,17 +1,12 @@
-#require_relative 'go_fish.rb'
-#requite_relative 'strip_club.rb'
+require 'spec_helper'
+require_relative '../casino_manager.rb'
 
-class Manager
-
-  attr_accessor :money
-
-  def initialize
-    @money = 1000
-    #@go_fish = GoFish.new
-    #@strip_club = StripClub.new
+describe Manager do
+  before(:each) do
+    @manager = Manager.new
   end
 
-  def main_menu
+  it 'prints main menu' do
     cards =
                 "__                                               
         _..-''--'----_.                                        
@@ -33,6 +28,23 @@ class Manager
        /         /                                             
       /         /                                              
                /"
-    puts cards
+    expected = cards
+    puts expected
+    puts @manager.main_menu
+    expect{@manager.main_menu}.to output(expected).to_stdout
   end
+
+  it 'displays money' do
+    @answer.add_answer('Test')
+    expected = @answer.default_answers
+    @answer.reset_answers
+    actual = @answer.my_answers
+    expect(actual).to eq(expected)
+  end
+
+  it 'does nothing' do
+    expected = puts @answer.my_answers
+    expect {@answer.print_answers}.to output(expected).to_stdout
+  end
+
 end
