@@ -33,7 +33,7 @@ class Deck
 
   def shuffle_cards
     @shuffle = @cards.shuffle
-    list
+    #list
   end
 
   def list
