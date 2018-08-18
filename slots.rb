@@ -2,12 +2,10 @@
 
 class Slots
 
-  def initialize
+  def initialize(manager)
+    @manager = manager
     @icons = %w[🍒 💸 💰 👛 💲]
-    @money = 10000
     @bet = 100
-    print_art
-    print_menu
   end
 
   def print_art
@@ -44,6 +42,7 @@ class Slots
     _|    \_______________________/    |_
     (_____________________________________)
     '
+    print_menu
   end
 
 
@@ -54,7 +53,7 @@ class Slots
     =============================
     "
     puts "
-    Your cash: $#{@money}
+    Your cash: $#{@manager.money}
     Current Bet: $#{@bet}
     1) Play!
     2) Change Bet
@@ -70,7 +69,7 @@ class Slots
       when 2
         change_bet
       when 3
-        #@manager.print_main_menu
+        @manager.print_main_menu
       else
         puts "Invalid Input. Try Again"
         print_menu
@@ -79,8 +78,8 @@ class Slots
 
   def spin
     results = []
-    if @money >= @bet
-      @money -= @bet
+    if @manager.money >= @bet
+      @manager.money -= @bet
       3.times do
         results << @icons.sample
       end
@@ -90,7 +89,7 @@ class Slots
         puts "Better luck next time!"
         print_menu
       else
-        @money += winnings
+        @manager.money += winnings
         puts "You won: $#{winnings}"
         print_menu
       end
@@ -117,7 +116,7 @@ class Slots
   def change_bet
     puts "Change your bet: "
     new_bet = gets.strip.to_i
-    if new_bet > @money
+    if new_bet > @manager.money
       puts "You don't have that kind of money!"
       print_menu
     else
@@ -127,5 +126,3 @@ class Slots
   end
 
 end
-
-s = Slots.new

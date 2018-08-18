@@ -1,4 +1,4 @@
-require_relative 'casino_manager.rb'
+#require_relative 'casino_manager.rb'
 require_relative 'deck.rb'
 #require_relative 'rick-roll.mp3'
 
