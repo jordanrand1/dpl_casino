@@ -93,6 +93,9 @@ class Slots
         puts "You won: $#{winnings}"
         print_menu
       end
+    else
+      puts "You don't have the money for that!"
+      print_menu
     end
   end
 
