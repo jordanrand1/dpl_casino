@@ -1,6 +1,7 @@
 #require_relative 'go_fish.rb'
 require_relative 'strip_club.rb'
 require_relative 'slots.rb'
+require_relative 'blackjack.rb'
 
 class Manager
 
@@ -8,10 +9,11 @@ class Manager
 
   def initialize
     @money = 1000
-    @games = [ 'Slots', 'Go Fish']
+    @games = [ 'Slots', 'Go Fish', 'Black Jack']
     #@go_fish = GoFish.new
     @strip_club = StripClub.new
     @slots = Slots.new(self)
+    @blackjack = BlackJack.new(self)
     print_main_menu
   end
 
@@ -76,7 +78,7 @@ class Manager
     \t-----------------------------
     "
     @games.each_with_index {|game, index| puts "#{index + 1}) #{game}"}
-    puts "3) Go Back to Main Menu"
+    puts "4) Go Back to Main Menu"
     choose_game(gets.strip.to_i)
   end
 
@@ -88,6 +90,8 @@ class Manager
       when 2
         @go_fish.menu
       when 3
+        @blackjack.print_bj_main_menu
+      when 4
         print_main_menu
       else
         puts "Invalid Input. Try Again."
