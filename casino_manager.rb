@@ -1,4 +1,4 @@
-#require_relative 'go_fish.rb'
+require_relative 'go_fish.rb'
 require_relative 'strip_club.rb'
 require_relative 'slots.rb'
 require_relative 'blackjack.rb'
@@ -10,7 +10,7 @@ class Manager
   def initialize
     @money = 1000
     @games = [ 'Slots', 'Go Fish', 'Black Jack']
-    #@go_fish = GoFish.new
+    @go_fish = GoFish.new(self)
     @strip_club = StripClub.new
     @slots = Slots.new(self)
     @blackjack = BlackJack.new(self)
@@ -65,6 +65,33 @@ class Manager
         exit
       when 69
         @strip_club.animation
+      when 666
+        puts "
+        .:'                                  `:.
+        ::'                                    `::
+       :: :.                                  .: ::
+        `:. `:.             .             .:'  .:'
+          `::. `::          !           ::' .::'
+             `::.`::.    .' ! `.    .::'.::'
+               `:.  `::::'':!:``::::'   ::'
+               :'*:::.  .:' ! `:.  .:::*`:
+              :: HHH::.   ` ! '   .::HHH ::
+             ::: `H TH::.  `!'  .::HT H' :::
+             ::..  `THHH:`:   :':HHHT'  ..::
+             `::      `T: `. .' :T'      ::'
+               `:. .   :         :   . .:'
+                 `::'               `::'
+                   :'  .`.  .  .'.  `:
+                   :' ::.       .:: `:
+                   :' `:::     :::' `:
+                    `.  ``     ''  .'
+                     :`...........':
+                     ` :`.     .': '
+                      `:  `"""'  :' 
+        ""
+        puts "You have sold your sole for $1."
+        @money += 1
+        print_main_menu
       else
         "Invalid input. Try again!"
         print_main_menu
@@ -88,7 +115,7 @@ class Manager
         #@blackjack.menu
         @slots.print_art
       when 2
-        @go_fish.menu
+        @go_fish.loser
       when 3
         @blackjack.print_bj_main_menu
       when 4

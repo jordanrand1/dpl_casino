@@ -4,8 +4,8 @@ class GoFish
 
   #attr_accessor :money
 
-  def initialize#(manager)
-    #@manager = manager
+  def initialize(manager)
+    @manager = manager
     #@money = 0
     #d = Deck.new
     #d.list
@@ -14,6 +14,7 @@ class GoFish
 def loser
   puts
   puts "Your wallet is now empty because you asked" 
+  @manager.money = 0
   puts "to play Go Fish at a casino."
           %x( say 'Never gonna give you up 
           Never gonna let you down 
@@ -21,12 +22,10 @@ def loser
           Never gonna make you cry 
           Never gonna say good bye 
           Never gonna tell a lie and hurt you' ) 
+  @manager.print_main_menu
   #print_main_menu 
 end
 end
-
-@gofish = GoFish.new
-@gofish.loser 
 
 #$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 

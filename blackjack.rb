@@ -29,7 +29,12 @@ class BlackJack
   def make_selection(choice)
     case choice 
       when 1
-        play_game
+        if @manager.money < @bet
+          puts "Please change your bet."
+          print_bj_main_menu
+        else
+          play_game
+        end
       when 2
         change_bet
       when 3
@@ -61,6 +66,7 @@ class BlackJack
   end
 
   def play_game
+    @manager.money -= @bet
     @dealer_hand = []
     @player_hand = []
     deck = Deck.new
@@ -100,6 +106,7 @@ class BlackJack
         playing_menu
       when 'stay'
         dealer_hit
+        choose_winner
       else
         puts "Invalid input! Try again!"
         playing_menu
